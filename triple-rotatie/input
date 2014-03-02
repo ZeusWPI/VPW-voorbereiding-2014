@@ -1,0 +1,74 @@
+>>> codeer("Your highness, when I said that you are like a stream of bat's piss, I only mean that you shine out like a shaft of gold when all around it is dark", 5, 5, 20)
+" rsltheIaki  t'sdhr assaei, ea y m teoatpfob ayu niIlsme ahut  na st h ono wliek  ieu to s ahoaYlu snflfsg, dhew la arods iintdrktaor nhyiu g  heno"
+>>> decodeer(" rsltheIaki  t'sdhr assaei, ea y m teoatpfob ayu niIlsme ahut  na st h ono wliek  ieu to s ahoaYlu snflfsg, dhew la arods iintdrktaor nhyiu g  heno", 5, 5, 20)
+"Your highness, when I said that you are like a stream of bat's piss, I only mean that you shine out like a shaft of gold when all around it is dark"
+
+>>> codeer("I don't wanna talk to you no more, you empty headed animal food trough wiper! I fart in your general direction! You mother was a hamster and your father smelt of elderberries!", 9, 17, 17)
+"audml ty eood  aro tpu rw!rn orni t r yalru  fdghietIofnao!imog Yrmuee tardn wiseco  irstr m helaoalyhareaudrr t ostnn fan sh! e'eflt ekwdoe to ntbe ieoyumIo  rd,aoaameepnhe y"
+>>> decodeer("audml ty eood  aro tpu rw!rn orni t r yalru  fdghietIofnao!imog Yrmuee tardn wiseco  irstr m helaoalyhareaudrr t ostnn fan sh! e'eflt ekwdoe to ntbe ieoyumIo  rd,aoaameepnhe y", 9, 17, 17)
+"I don't wanna talk to you no more, you empty headed animal food trough wiper! I fart in your general direction! You mother was a hamster and your father smelt of elderberries!"
+
+>>> codeer("My philosophy, like color television, is all there in black and white", 2, 0, 17)
+'M  philo ope wtlckeyeolor siliyi,aon  h tellvseirb,an cladkshni  ehti'
+>>> decodeer("M  philo ope wtlckeyeolor siliyi,aon  h tellvseirb,an cladkshni  ehti", 2, 0, 17)
+'My philosophy, like color television, is all there in black and white'
+
+>>> codeer("Strange women lying in ponds distributing swords is no basis for a system of government!", 15, 15, 16)
+'wsnioba sorim o foasersnmnf  ge sreaysgnet  omevti!Snltgi dw dnnyi  s siptobuintgrnodr s'
+>>> decodeer("wsnioba sorim o foasersnmnf  ge sreaysgnet  omevti!Snltgi dw dnnyi  s siptobuintgrnodr s", 15, 15, 16)
+'Strange women lying in ponds distributing swords is no basis for a system of government!'
+
+>>> codeer("It's funny, isn't it? How your best friend can just blow up like that?", 5, 1, 18)
+"bu ste nn  ufsot wi u eo ttr?rtdc's anbineuhajyl, s'Iopt tl?kfni wiH y"
+>>> decodeer("bu ste nn  ufsot wi u eo ttr?rtdc's anbineuhajyl, s'Iopt tl?kfni wiH y", 5, 1, 18)
+"It's funny, isn't it? How your best friend can just blow up like that?"
+
+>>> codeer("We are no longer the knights who say ni! We are now the knights who say ekki-ekki-ekki-pitang-zoom-boing!", 0, 12, 15)
+'!e aneWok nokgek whe kkight tshk wa skiy -e-ape-not-zhe-omigh!W  ho  at enritenoiseloi niwarg sknoybnirg '
+>>> decodeer("!e aneWok nokgek whe kkight tshk wa skiy -e-ape-not-zhe-omigh!W  ho  at enritenoiseloi niwarg sknoybnirg ", 0, 12, 15)
+'We are no longer the knights who say ni! We are now the knights who say ekki-ekki-ekki-pitang-zoom-boing!'
+
+>>> codeer("Nudge, nudge, wink, wink. Know what I mean?", 12, 12, 1)
+'n,adg un,edg w,ekn w.ikK wnom wtih  a?nIeNu'
+>>> decodeer("n,adg un,edg w,ekn w.ikK wnom wtih  a?nIeNu", 12, 12, 1)
+'Nudge, nudge, wink, wink. Know what I mean?'
+
+>>> codeer("There's nothing an agnostic can't do if he doesn't know whether he believes in anything or not", 14, 16, 17)
+"'ifnht wnn edoewhrtehno  ehvebrs  enyietei aoh ntT'nnos tig hen ehsigoaatg 'iotcn  cakd no rls"
+>>> decodeer("'ifnht wnn edoewhrtehno  ehvebrs  enyietei aoh ntT'nnos tig hen ehsigoaatg 'iotcn  cakd no rls", 14, 16, 17)
+"There's nothing an agnostic can't do if he doesn't know whether he believes in anything or not"
+
+>>> codeer("I don't think there's a punch-line scheduled, is there?", 3, 0, 8)
+"ishon  u-eenk sacrhu, isp nectlhne? dedi'lhet et tIdrh'"
+>>> decodeer("ishon  u-eenk sacrhu, isp nectlhne? dedi'lhet et tIdrh'", 3, 0, 8)
+"I don't think there's a punch-line scheduled, is there?"
+
+>>> codeer("Tonight, instead of discussing the existence or non- existence of God, they have decided to fight for it.", 15, 6, 2)
+',oreie stcn  eeisoeucesfs tGnd xheshta  ende-oo oorxscti  doed,nf ingty hfv ii gthieadfd to icig thnn.eTt'
+>>> decodeer(",oreie stcn  eeisoeucesfs tGnd xheshta  ende-oo oorxscti  doed,nf ingty hfv ii gthieadfd to icig thnn.eTt", 15, 6, 2)
+'Tonight, instead of discussing the existence or non- existence of God, they have decided to fight for it.'
+
+>>> codeer("We apologise for the fault in the subtitles. Those responsible have been sacked.", 6, 3, 12)
+' hseoorlfauithnltseb.ie oTshr sees vi b pes.W hosa ne lnktbepe acuetdeao  gileft'
+>>> decodeer(" hseoorlfauithnltseb.ie oTshr sees vi b pes.W hosa ne lnktbepe acuetdeao  gileft", 6, 3, 12)
+'We apologise for the fault in the subtitles. Those responsible have been sacked.'
+
+>>> codeer("Dinsdale, He was a nice boy.... He nailed my head to a coffee table.", 10, 14, 18)
+'cen bHle tai  e td.mheasdo,  ws ac offlee ny.abeD..l.i dnaeHe  aaoiy'
+>>> decodeer("cen bHle tai  e td.mheasdo,  ws ac offlee ny.abeD..l.i dnaeHe  aaoiy", 10, 14, 18)
+'Dinsdale, He was a nice boy.... He nailed my head to a coffee table.'
+
+>>> codeer("Nobody expects the Spanish inquisition!", 8, 17, 7)
+'qoinh SisNii ustib!yodoe excppthse annt'
+>>> decodeer("qoinh SisNii ustib!yodoe excppthse annt", 8, 17, 7)
+'Nobody expects the Spanish inquisition!'
+
+>>> codeer("He's not the Messiah - he's a very naughty boy.", 10, 6, 5)
+"aet snos -ag Mh'sbHe  vhey uetyir yna.hh's eot "
+>>> decodeer("aet snos -ag Mh'sbHe  vhey uetyir yna.hh's eot ", 10, 6, 5)
+"He's not the Messiah - he's a very naughty boy."
+
+>>> codeer("This morning, shortly after 11 o'clock, comedy struck this little house in Dibbley road. Sudden, violent comedy.", 2, 8, 8)
+" igt rolohka11 fom'r, ecyck stul cloentsdlrch tt ouins ie yoh .le inSuD,io bbeamdvtmodd y.Teiers ,cnneo sdrlhity"
+>>> decodeer(" igt rolohka11 fom'r, ecyck stul cloentsdlrch tt ouins ie yoh .le inSuD,io bbeamdvtmodd y.Teiers ,cnneo sdrlhity", 2, 8, 8)
+"This morning, shortly after 11 o'clock, comedy struck this little house in Dibbley road. Sudden, violent comedy."
