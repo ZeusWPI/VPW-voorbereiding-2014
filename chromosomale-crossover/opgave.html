@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+  </head>
+  <body>
+    <p style="text-align: justify;">Als &eacute;&eacute;n van de laatste stappen
+      van genetische recombinatie kunnen twee homologe chromosomen tijdens de
+      meiose genetisch materiaal uitwisselen in een proces dat <span style="font-weight: bold;">synapsis</span>
+      genoemd wordt. Door deze <span style="font-weight: bold;">chromosomale
+        crossover</span> ontstaan gerecombineerde chromosomen. Crossover komt
+      meestal voor wanneer overeenkomstige regio's van overeenkomstige
+      chromosomen breken en zich daarna terug aanhechten aan het andere
+      chromosoom.</p>
+    <div style="text-align: center;">
+      <div class="prob_media"><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+          href="http://www.pythia.ugent.be/spoj/files/crossover1.png"><img class="prob_media"
+            style="margin-right: 50px;" title="crossover" src="http://www.pythia.ugent.be/spoj/files/crossover1.png"
+            alt="crossover" height="240"></a>
+        <div class="highslide-caption">Fig. 64. Scheme to illustrate a method of
+          crossing over of the chromosomes. Illustration made by Thomas Hunt
+          Morgan (1916).</div>
+      </div>
+      <div class="prob_media"><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+          href="http://www.pythia.ugent.be/spoj/files/crossover2.png"><img class="prob_media"
+            title="crossover" src="http://www.pythia.ugent.be/spoj/files/crossover2.png"
+            alt="crossover" height="240"></a>
+        <div class="highslide-caption">Fig. 65. Scheme to illustrate double
+          crossing over of the chromosomes. Illustration made by Thomas Hunt
+          Morgan (1916).</div>
+      </div>
+    </div>
+    <p style="text-align: justify;">Een theoretische beschrijving van crossover
+      werd ge&iuml;ntroduceerd door Thomas Hunt Morgan, die zich daarbij liet
+      inspireren op het werk van de Belgische professor Frans Alfons Janssens
+      van de Katholieke Universiteit Leuven. Deze laatste had het fenomeen reeds
+      in 1909 beschreven en noemde het <span style="font-weight: bold;">chiasmatypie</span>.</p>
+    <h3>Opgave</h3>
+    <p style="text-align: justify;">In deze opgave stellen we een chromosoom
+      voor als een lijst of een tuple van strikt stijgende gehele getallen (elk
+      getal is dus groter dan het voorgaande getal). De punten waar twee
+      chromosomen kunnen openbreken &mdash; en waar zich dus crossover kan
+      voordoen &mdash; worden aangegeven door de gemeenschappelijke getallen in
+      de twee corresponderende lijsten of tuples. Dit wordt ge&iuml;llustreerd
+      in onderstaande afbeelding, waarbij crossover kan voorkomen waar de twee
+      chromosomen elkaar raken.</p>
+    <div style="text-align:center;"><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+        href="http://www.pythia.ugent.be/spoj/files/crossover4.png"><img title="crossover"
+          src="http://www.pythia.ugent.be/spoj/files/crossover4.png" alt="crossover"
+          height="180"></a>
+      <div class="highslide-caption">Twee chromosomen <span style="font-family: monospace;">[3,
+          5, <strong>7</strong>, 9, 20, <strong>25</strong>, 30, 40, <strong>55</strong>,
+          56, <strong>57</strong>, 60, 62]</span> en <span style="font-family: monospace;">[1,
+          4, <strong>7</strong>, 11, 14, <strong>25</strong>, 44, 47, <strong>55</strong>,
+          <strong>57</strong>, 100]</span>, waarbij de crossoverpunten in het
+        vet weergegeven worden. Bovenaan en onderaan worden de deelsommen voor,
+        tussen en na de crossoverpunten weergegeven voor respectievelijk het eerste
+        en het tweede chromosoom. De maximale deelsommen zijn hierbij in het vet
+        weergegeven.</div>
+    </div>
+    <p style="text-align: justify;">De chromosomen kunnen op de volgende manier
+      doorlopen worden:</p>
+    <ol style="text-align: justify;">
+      <li>Als startpunt kan het begin (de linkerkant) van &eacute;&eacute;n van
+        beide chromosomen gekozen worden.</li>
+      <li>Vanaf elk punt kan vooruit (naar rechts) gestapt worden.</li>
+      <li>Bij een crossoverpunt heb je de keuze om verder te stappen op
+        hetzelfde chromosoom, of over te schakelen op het andere chromosoom.</li>
+    </ol>
+    <p style="text-align: justify;">Gevraagd wordt:</p>
+    <ul style="text-align: justify;">
+      <li>Schrijf een functie <span style="font-family: monospace;">crossoverpunten</span>
+        waaraan twee chromosomen moeten doorgegeven worden. De functie moet
+        teruggeven hoeveel crossoverpunten er zijn tussen deze chromosomen.</li>
+      <li>Schrijf een functie <span style="font-family: monospace;">maximaleSom</span>
+        waaraan twee chromosomen moeten doorgegeven worden. De functie moet de
+        maximale som bepalen van alle paden die op de hierboven beschreven
+        manier kunnen doorlopen worden. In het bovenstaand voorbeeld wordt de
+        maximale som 450 bereikt door het volgende pad te doorlopen:</li>
+      <blockquote><span style="font-family: monospace;">3 + 5 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 7 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 9 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 20 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 25 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 44 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 47 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 55 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 56 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 57 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 60 </span><span style="font-family: monospace;">+</span><span
+          style="font-family: monospace;"> 62</span></blockquote>
+      De maximale som wordt gevonden door de maximale deelsommen te bepalen van
+      de fragmenten v&oacute;&oacute;r het eerste crossoverpunt, tussen
+      opeenvolgende crossoverpunten, en na het laatste crossoverpunt. Merk op
+      dat het mogelijk is dat twee deelsommen gelijk zijn indien de eindpunten
+      zelf crossoverpunten zijn, of indien twee crossoverpunten elkaar
+      onmiddellijk opvolgen zonder tussenliggende punten.
+    </ul>
+    <h3>Algoritme</h3>
+    <p style="text-align: justify;">Om de crossoverpunten te vinden, kan je
+      gebruik maken van het feit dat de getallen in de twee gegeven lijsten
+      strikt stijgend zijn. Je kunt beide lijsten dan <span style="font-weight: bold;">tegelijkertijd</span>
+      van links naar rechts doorlopen, waarbij je voor elke lijst <span style="font-weight: bold;">afzonderlijk</span>
+      bijhoudt op welke positie je je momenteel bevindt. Ga telkens
+      &eacute;&eacute;n stap vooruit in de lijst waar op de huidige positie het
+      kleinste getal staat. Als je op de huidige positie in beide lijsten
+      eenzelfde getal aantreft, dan heb je een crossoverpunt gevonden. Tijdens
+      het doorlopen van beide lijsten kan je meteen ook al de deelsommen voor,
+      tussen, en na de crossoverpunten bepalen.</p>
+    <h3>Voorbeeld</h3>
+    <div class="hlcode">
+      <div class="syntax">
+        <pre><span class="gp">&gt;&gt;&gt; </span><span class="n">chromosoom1</span> <span
+class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span
+class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span
+class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span
+class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span
+class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span
+class="mi">56</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span
+class="mi">60</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromosoom2</span> <span class="o">=</span> <span
+class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span
+class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span
+class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">25</span><span
+class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">47</span><span
+class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">57</span><span
+class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crossoverpunten</span><span
+class="p">(</span><span class="n">chromosoom1</span><span class="p">,</span> <span
+class="n">chromosoom2</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maximaleSom</span><span class="p">(</span><span
+class="n">chromosoom1</span><span class="p">,</span> <span class="n">chromosoom2</span><span
+class="p">)</span>
+<span class="go">450</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromosoom1</span> <span class="o">=</span> <span
+class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span
+class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span
+class="p">,</span> <span class="mi">1005</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromosoom2</span> <span class="o">=</span> <span
+class="p">[</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span
+class="mi">1000</span><span class="p">,</span> <span class="mi">1001</span><span
+class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crossoverpunten</span><span
+class="p">(</span><span class="n">chromosoom1</span><span class="p">,</span> <span
+class="n">chromosoom2</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maximaleSom</span><span class="p">(</span><span
+class="n">chromosoom1</span><span class="p">,</span> <span class="n">chromosoom2</span><span
+class="p">)</span>
+<span class="go">2100</span>
+</pre></div>
+    </div>
+    <h3>Bronnen</h3>
+    <p style="text-align: justify;"><strong>Morgan, T.H. (1916)</strong>. A
+      Critique of the Theory of Evolution. Princeton, NJ, Princeton University
+      Press. <a href="http://www.gutenberg.org/files/30701/30701-h/30701-h.htm"
+        target="_blank"><img src="http://www.pythia.ugent.be/spoj/files/link.png"
+          alt="" height="10" width="10"></a></p>
+  </body>
+</html>
