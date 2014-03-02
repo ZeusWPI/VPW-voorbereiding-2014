@@ -1,0 +1,228 @@
+>>> verkaveling = Verkaveling(8, 12)
+
+>>> class ReferentieVerkaveling: # doctest: +NOSHOW
+...         
+...     def __init__(self, rijen, kolommen):
+...         
+...         self.rijen = rijen
+...         self.kolommen = kolommen
+...         self.gereserveerd = []
+...         for _ in range(rijen):
+...             self.gereserveerd.append([False] * kolommen)
+...             
+...     def __str__(self):
+...         
+...         def weergave(perceel):
+...             if perceel:
+...                 return '-'
+...             else:
+...                 return '#'
+...         
+...         return '\n'.join(''.join([weergave(perceel) for perceel in rij]) for rij in self.gereserveerd)
+...     
+...     def reserveer(self, x1, y1, x2=None, y2=None):
+...         
+...         if x2 is None:
+...             x2 = x1
+...         if y2 is None:
+...             y2 = y1
+...             
+...         assert 0 <= x1 <= x2 < self.rijen, 'ongeldige positie'
+...         assert 0 <= y1 <= y2 < self.kolommen, 'ongeldige positie'
+...         
+...         for x in range(x1, x2 + 1):
+...             for y in range(y1, y2 + 1):
+...                 assert not self.gereserveerd[x][y], 'perceel kan niet gereserveerd worden'
+...         
+...         for x in range(x1, x2 + 1):
+...             for y in range(y1, y2 + 1):
+...                 self.gereserveerd[x][y] = True
+...                 
+...     def grootstePerceel(self):
+...         
+...         resultaat = 0
+...         for rij in range(self.rijen):
+...             for kolom in range(self.kolommen):
+...                 maxKolom = self.kolommen
+...                 for nr in range(rij, self.rijen):
+...                     nc = kolom
+...                     while nc < maxKolom and not self.gereserveerd[nr][nc]:
+...                         nc += 1
+...                     if (nr - rij + 1) * (nc - kolom) > resultaat:
+...                         resultaat = (nr - rij + 1) * (nc - kolom)
+...                     maxKolom = nc
+...         return resultaat
+...     
+...     def positieGrootstePerceel(self):
+...         
+...         resultaat = 0
+...         grootste = None
+...         for rij in range(self.rijen):
+...             for kolom in range(self.kolommen):
+...                 maxKolom = self.kolommen
+...                 for nr in range(rij, self.rijen):
+...                     nc = kolom
+...                     while nc < maxKolom and not self.gereserveerd[nr][nc]:
+...                         nc += 1
+...                     if (nr - rij + 1) * (nc - kolom) > resultaat:
+...                         resultaat = (nr - rij + 1) * (nc - kolom)
+...                         grootste = rij, kolom, nr, nc - 1 
+...                     maxKolom = nc
+...         return grootste
+...     
+...     def toonPerceel(self, x1, y1, x2=None, y2=None):
+...         
+...         resultaat = []
+...         if x2 is None:
+...             x2 = x1
+...         if y2 is None:
+...             y2 = y1
+...         assert 0 <= x1 <= x2 < self.rijen, 'ongeldige positie'
+...         assert 0 <= y1 <= y2 < self.kolommen, 'ongeldige positie'
+...         for x in range(self.rijen):
+...             regel = ''
+...             for y in range(self.kolommen):
+...                 if self.gereserveerd[x][y]:
+...                     if x1 <= x <= x2 and y1 <= y <= y2:
+...                         regel += '='
+...                     else:
+...                         regel += '-'
+...                 else:
+...                     if x1 <= x <= x2 and y1 <= y <= y2:
+...                         regel += '@'
+...                     else:
+...                         regel += '#'
+...             resultaat.append(regel)
+...         return '\n'.join(resultaat)
+
+>>> referentie = ReferentieVerkaveling(8, 12) # doctest: +NOSHOW
+
+>>> print(verkaveling) #doctest: +STDOUT
+############
+############
+############
+############
+############
+############
+############
+############
+
+>>> verkaveling.grootstePerceel() 
+
+<DEFINITION>
+class ParcelRenderer(OutputProcessor):
+    
+    """"
+    Controleert of de correcte grootte van het grootste perceel 
+    gevonden werd.
+    """
+    
+    def __init__(self, referentie):
+    
+        # call initialization method of base class
+        super().__init__()
+        
+        # set class-specific properties
+        self.referentie = referentie
+        
+    def renderOutput(self, **kwargs):
+    
+        if self.getStatus() == 'WA':
+            
+            expected = self.getExpectedOutput('return')
+            generated = self.getGeneratedOutput('return')
+
+            message = 'Het grootste perceel bestaat uit {} kavels, en geen {} zoals door jouw oplossing '.format(expected, generated)
+            message += 'werd berekend. Onderstaande afbeelding toont de huidige toestand van de '
+            message += 'verkaveling, waarbij de gereserveerde kavels worden aangegeven met een '
+            message += 'koppelteken (-) en de niet-gereserveerde kavels met een hekje (#). De kavels die '
+            message += 'deel uitmaken van een grootste perceel dat nog kan gereserveerd worden (soms '
+            message += 'zijn er meerdere mogelijkheden) worden aangegeven met een apestaartje (@).'
+            self.addMessage(message)
+            self.addMessage(self.referentie.toonPerceel(*self.referentie.positieGrootstePerceel()))
+</DEFINITION>
+
+<OUTPUTPROCESSOR>
+ParcelRenderer(referentie)
+</OUTPUTPROCESSOR>
+96
+
+>>> referentie.reserveer(3, 5, 4, 6) # doctest: +NOSHOW
+>>> verkaveling.reserveer(3, 5, 4, 6)
+
+>>> print(verkaveling) #doctest: +STDOUT
+############
+############
+############
+#####--#####
+#####--#####
+############
+############
+############
+
+>>> verkaveling.grootstePerceel() 
+<OUTPUTPROCESSOR>
+ParcelRenderer(referentie)
+</OUTPUTPROCESSOR>
+40
+
+>>> referentie.reserveer(1, 10, 5, 10) # doctest: +NOSHOW
+>>> verkaveling.reserveer(1, 10, 5, 10)
+
+>>> print(verkaveling) #doctest: +STDOUT
+############
+##########-#
+##########-#
+#####--###-#
+#####--###-#
+##########-#
+############
+############
+
+>>> verkaveling.grootstePerceel() 
+<OUTPUTPROCESSOR>
+ParcelRenderer(referentie)
+</OUTPUTPROCESSOR>
+40
+
+>>> referentie.reserveer(6, 2, 6, 3) # doctest: +NOSHOW
+>>> verkaveling.reserveer(6, 2, 6, 3)
+
+>>> print(verkaveling) #doctest: +STDOUT
+############
+##########-#
+##########-#
+#####--###-#
+#####--###-#
+##########-#
+##--########
+############
+
+>>> verkaveling.grootstePerceel() 
+<OUTPUTPROCESSOR>
+ParcelRenderer(referentie)
+</OUTPUTPROCESSOR>
+30
+
+>>> referentie.reserveer(3, 0) # doctest: +NOSHOW
+>>> referentie.reserveer(1, 2) # doctest: +NOSHOW
+>>> referentie.reserveer(3, 7) # doctest: +NOSHOW
+>>> verkaveling.reserveer(3, 0)
+>>> verkaveling.reserveer(1, 2)
+>>> verkaveling.reserveer(3, 7)
+
+>>> print(verkaveling) #doctest: +STDOUT
+############
+##-#######-#
+##########-#
+-####---##-#
+#####--###-#
+##########-#
+##--########
+############
+
+>>> verkaveling.grootstePerceel() 
+<OUTPUTPROCESSOR>
+ParcelRenderer(referentie)
+</OUTPUTPROCESSOR>
+21

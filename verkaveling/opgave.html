@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+  </head>
+  <body>
+    <p style="text-align: justify;">Bij een <em>verkaveling</em> wordt een stuk
+      land opgedeeld in verschillende <em>kavels</em> die elk een andere
+      eigenaar kunnen hebben. Vroeger hadden de boeren kleine stukken land, die
+      vaak door elkaar heen lagen. Een boer moest toen over het land van een
+      andere boer lopen of rijden om naar zijn eigen kavels te gaan. Tengevolge
+      van de schaalvergroting van de landbouw wordt tegenwoordig gewerkt met
+      vierkante kavels, en streven boeren ernaar om te werken met zo groot
+      mogelijke <em>percelen</em>: rechthoekige gebieden van aaneengesloten
+      kavels.</p>
+    <p style="text-align: justify;">Onderstaand voorbeeld toont een rechthoekig
+      stuk land dat werd opgedeeld in $10 \times 10$ vierkante kavels. Drie
+      percelen (witte rechthoeken) werden reeds door boeren in gebruik genomen.
+      Zoek de oppervlakte van het grootst mogelijke perceel waarvan nog geen
+      enkel kavel in gebruik werd genomen. In dit voorbeeld is dit een perceel
+      dat bestaat uit 16 kavels, zoals aangegeven door de gestreepte rechthoek.</p>
+    <div style="text-align:center;"><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+        href="http://www.pythia.ugent.be/spoj/files/verkaveling.png"><img title="verkaveling"
+          src="http://www.pythia.ugent.be/spoj/files/verkaveling.png" alt="verkaveling"
+          height="330"></a></div>
+    <h3>Opgave</h3>
+    <p style="text-align: justify;">Definieer een klasse <span style="font-family: monospace;">Verkaveling</span>
+      met volgende methoden:</p>
+    <ul style="text-align: justify;">
+      <li>Een initialisatiemethode <span style="font-family: monospace;">__init__</span>
+        waarmee een verkaveling kan aangemaakt worden van een rechthoekig stuk
+        land. Deze verkaveling bestaat uit een $m \times n$ rooster van kavels,
+        met $m$ het aantal rijen en $n$ het aantal kolommen in het rooster. De
+        waarden $m$ en $n$ moeten als argumenten aan de initialisatiemethode
+        doorgegeven worden. Initieel wordt nog geen enkel kavel gereserveerd
+        (toegewezen aan een eigenaar).</li>
+      <li>Een methode <span style="font-family: monospace;">__str__</span>
+        waarmee de huidige reservaties van de kavels uit de verkaveling kunnen
+        weergegeven worden. Aan deze methode kunnen geen argumenten meegegeven
+        worden. Een gereseveerd kavel wordt aangegeven met een koppelteken (<span
+          style="font-family: monospace;">-</span>). Een kavel dat nog niet
+        gereserveerd werd, wordt aangegeven met een hekje (<span style="font-family: monospace;">#</span>).
+        Hieronder vind je enkele voorbeelden van hoe de volledige verkaveling
+        moet weergegeven worden.</li>
+      <li>Een methode <span style="font-family: monospace;">reserveer</span>
+        waarmee een rechthoekig perceel kan gereserveerd worden. Deze methode
+        heeft vier parameters, waaraan natuurlijke getallen kunnen doorgegeven
+        worden. De eerste twee parameters stellen het rij- en kolomnummer van de
+        positie van de linkerbovenhoek van het perceel voor, en moeten verplicht
+        doorgegeven worden. De laatste twee parameters zijn optioneel, en
+        stellen het rij- en kolomnummer van de positie van de rechteronderhoek
+        van het perceel voor. Indien deze laatste parameters niet worden
+        doorgegeven, dan bestaat het perceel uit slechts &eacute;&eacute;n
+        kavel, waarvan de positie wordt aangegeven door de eerste twee
+        parameters. Zoals aangegeven in bovenstaande afbeelding worden de rijen
+        genummerd van boven naar onder en de kolommen van links naar rechts,
+        waarbij de nummering steeds start vanaf nul. Indien het perceel kavels
+        bevat die reeds gereserveerd werden, dan moet er geen enkel kavel
+        gereserveerd worden, en moet de methode een <span style="font-family: monospace;">AssertionError</span>
+        opwerpen zoals ge&iuml;llustreerd in onderstaand voorbeeld.</li>
+      <li>Een methode <span style="font-family: monospace;">grootstePerceel</span>
+        die de grootte teruggeeft van het grootste perceel dat nog kan
+        gereserveerd worden. Dit is dus de grootte van het grootste rechthoekige
+        gebied dat bestaat uit kavels die nog niet gereserveerd werden. Aan deze
+        methode kunnen geen argumenten doorgegeven worden.</li>
+    </ul>
+    <h3>Voorbeeld</h3>
+    <div class="hlcode">
+      <div class="syntax">
+        <pre><span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span> <span
+class="o">=</span> <span class="n">Verkaveling</span><span class="p">(</span><span
+class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">verkaveling</span><span class="p">)</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">grootstePerceel</span><span class="p">()</span>
+<span class="go">36</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">reserveer</span><span class="p">(</span><span class="mi">3</span><span
+class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span
+class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">verkaveling</span><span class="p">)</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">######</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">grootstePerceel</span><span class="p">()</span>
+<span class="go">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">reserveer</span><span class="p">(</span><span class="mi">0</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span
+class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">verkaveling</span><span class="p">)</span>
+<span class="go">###---</span>
+<span class="go">###---</span>
+<span class="go">###---</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">grootstePerceel</span><span class="p">()</span>
+<span class="go">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verkaveling</span><span class="o">.</span><span
+class="n">reserveer</span><span class="p">(</span><span class="mi">2</span><span
+class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="nc">AssertionError</span>: <span class="n-Identifier">perceel kan niet gereserveerd worden</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">verkaveling</span><span class="p">)</span>
+<span class="go">###---</span>
+<span class="go">###---</span>
+<span class="go">###---</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+<span class="go">---###</span>
+</pre> </div>
+    </div>
+  </body>
+</html>
