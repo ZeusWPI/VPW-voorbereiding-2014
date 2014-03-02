@@ -1,0 +1,488 @@
+>>> encode('And now for something completely different.', 4) 
+
+<DEFINITION>
+class RailFenceRenderer(OutputProcessor):
+
+    """
+    Shows text written on rail fence.
+    """
+    
+    def __init__(self, text, k):
+        
+        # call initialization method of base class
+        super().__init__()
+        
+        # set class-specific properties
+        self.text = text
+        self.k = k
+        
+    def renderOutput(self, **kwargs):
+        
+        if self.getStatus() == 'WA':
+        
+            # construct rail fence
+            matrix = [['#' for _ in range(len(self.text))] for _ in range(self.k)]
+            rij, volgende = 0, -1
+            if self.k == 1:
+                volgende = 0
+            for kolom in range(len(self.text)):
+                matrix[rij][kolom] = '<span style="background-color:#ffff00; color:#000000;"><strong>' + self.text[kolom] + '</strong></span>'
+                if rij == 0 or rij == self.k - 1:
+                    volgende *= -1
+                rij += volgende
+                    
+            # visualize scytale message
+            representation = '\n'.join(['<span style="color:#888888;">' + ''.join([e for e in rij]) + '</span>' for rij in matrix])
+            
+            self.addMessage(representation, escape=False)
+</DEFINITION>
+
+<OUTPUTPROCESSOR>
+RailFenceRenderer('And now for something completely different.', 4)
+</OUTPUTPROCESSOR>
+'Awsimlf.no  ohnopeyfetdnfrmtgclt irn oe ede'
+
+>>> decode('Awsimlf.no  ohnopeyfetdnfrmtgclt irn oe ede', 4)
+'And now for something completely different.'
+
+>>> encode('Yesterday is history, tomorrow is a mystery, today is a gift of God, which is why we call it the present.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Yesterday is history, tomorrow is a mystery, today is a gift of God, which is why we call it the present.', 5)
+</OUTPUTPROCESSOR>
+'YytmseagGcyl .ea soooi trdy i oihh l eptsdiirtr asyo affdh wwaihrntrshy rw y,ti to,wi ectteee ,om s  s  s'
+
+>>> decode('YytmseagGcyl .ea soooi trdy i oihh l eptsdiirtr asyo affdh wwaihrntrshy rw y,ti to,wi ectteee ,om s  s  s', 5)
+'Yesterday is history, tomorrow is a mystery, today is a gift of God, which is why we call it the present.'
+
+>>> encode("Those who mind don't matter, and those who matter don't mind.", 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("Those who mind don't matter, and those who matter don't mind.", 6)
+</OUTPUTPROCESSOR>
+"Tm nhd.h itmadwo odoon'a    rnnshdnt,teme'iew otrhsattm deot "
+
+>>> decode("Tm nhd.h itmadwo odoon'a    rnnshdnt,teme'iew otrhsattm deot ", 6)
+"Those who mind don't matter, and those who matter don't mind."
+
+>>> encode("Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", 6)
+</OUTPUTPROCESSOR>
+"T indun tewsantuin tpadtsu vrogrie vahsi  ouotis nef:ee u d;Inrbhneti n hremniy' eaeu.hitsatm  "
+
+>>> decode("T indun tewsantuin tpadtsu vrogrie vahsi  ouotis nef:ee u d;Inrbhneti n hremniy' eaeu.hitsatm  ", 6)
+"Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+
+>>> encode('Be yourself; everyone else is already taken.', 4) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Be yourself; everyone else is already taken.', 4)
+</OUTPUTPROCESSOR>
+'Br osayneus;eynle ld e. oefvree sratkyle iea'
+
+>>> decode('Br osayneus;eynle ld e. oefvree sratkyle iea', 4)
+'Be yourself; everyone else is already taken.'
+
+>>> encode('Be the change that you wish to see in the world.', 8) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Be the change that you wish to see in the world.', 8)
+</OUTPUTPROCESSOR>
+'Bttwe h o o eah ertgtsshlhn ietdeaywe . ho  ncui'
+
+>>> decode('Bttwe h o o eah ertgtsshlhn ietdeaywe . ho  ncui', 8)
+'Be the change that you wish to see in the world.'
+
+>>> encode('A room without books is like a body without a soul.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('A room without books is like a body without a soul.', 5)
+</OUTPUTPROCESSOR>
+'Aioloou wtbo ibdhuolr h ksk ytts.omotsiea i  ou  wa'
+
+>>> decode('Aioloou wtbo ibdhuolr h ksk ytts.omotsiea i  ou  wa', 5)
+'A room without books is like a body without a soul.'
+
+>>> encode('You only live once, but if you do it right, once is enough.', 2) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('You only live once, but if you do it right, once is enough.', 2)
+</OUTPUTPROCESSOR>
+'Yuol ieoc,bti o oi ih,oc seog.o nylv ne u fyud trgt nei nuh'
+
+>>> decode('Yuol ieoc,bti o oi ih,oc seog.o nylv ne u fyud trgt nei nuh', 2)
+'You only live once, but if you do it right, once is enough.'
+
+>>> encode('So many books, so little time.', 4) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('So many books, so little time.', 4)
+</OUTPUTPROCESSOR>
+'Sysl on k, iet. abo otliemostm'
+
+>>> decode('Sysl on k, iet. abo otliemostm', 4)
+'So many books, so little time.'
+
+>>> encode("In three words I can sum up everything I've learned about life: it goes on.", 3) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("In three words I can sum up everything I've learned about life: it goes on.", 3)
+</OUTPUTPROCESSOR>
+"Ih d   eyn'lnatfioontrewrsIcnsmu vrtigIv ere bu ie tge n eo aupeh eadol: s."
+
+>>> decode("Ih d   eyn'lnatfioontrewrsIcnsmu vrtigIv ere bu ie tge n eo aupeh eadol: s.", 3)
+"In three words I can sum up everything I've learned about life: it goes on."
+
+>>> encode('No one can make you feel inferior without your consent.', 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('No one can make you feel inferior without your consent.', 6)
+</OUTPUTPROCESSOR>
+'N fitsonm erou ne aaueeroyonockolf hoctn ey nwtu .e iir'
+
+>>> decode('N fitsonm erou ne aaueeroyonockolf hoctn ey nwtu .e iir', 6)
+'No one can make you feel inferior without your consent.'
+
+>>> encode("If you tell the truth, you don't have to remember anything.", 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("If you tell the truth, you don't have to remember anything.", 5)
+</OUTPUTPROCESSOR>
+"Ieto  rnftl ryuthore ig  leu  'atebah.yu ht,dnv mmntothoeey"
+
+>>> decode("Ieto  rnftl ryuthore ig  leu  'atebah.yu ht,dnv mmntothoeey", 5)
+"If you tell the truth, you don't have to remember anything."
+
+>>> encode('Insanity is doing the same thing, over and over again, but expecting different results.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Insanity is doing the same thing, over and over again, but expecting different results.', 1)
+</OUTPUTPROCESSOR>
+'Insanity is doing the same thing, over and over again, but expecting different results.'
+
+>>> decode('Insanity is doing the same thing, over and over again, but expecting different results.', 1)
+'Insanity is doing the same thing, over and over again, but expecting different results.'
+
+>>> encode('A friend is someone who knows all about you and still loves you.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('A friend is someone who knows all about you and still loves you.', 7)
+</OUTPUTPROCESSOR>
+'Askosy  o nbu t ofsmooatdisuriehw  nle.i owslyalvedn  lo  oneaul'
+
+>>> decode('Askosy  o nbu t ofsmooatdisuriehw  nle.i owslyalvedn  lo  oneaul', 7)
+'A friend is someone who knows all about you and still loves you.'
+
+>>> encode("I am so clever that sometimes I don't understand a single word of what I am saying.", 3) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("I am so clever that sometimes I don't understand a single word of what I am saying.", 3)
+</OUTPUTPROCESSOR>
+"I cehstsdtdt ierfa sn ms lvrta oeie  o' nesadasnl odo htIa aigaoe tmmInurn gw w my."
+
+>>> decode("I cehstsdtdt ierfa sn ms lvrta oeie  o' nesadasnl odo htIa aigaoe tmmInurn gw w my.", 3)
+"I am so clever that sometimes I don't understand a single word of what I am saying."
+
+>>> encode('Always forgive your enemies; nothing annoys them so much.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Always forgive your enemies; nothing annoys them so much.', 7)
+</OUTPUTPROCESSOR>
+'Avi  liemegamswg esnneoaryn;inh yooe hotm.sfu nty uh rosc'
+
+>>> decode('Avi  liemegamswg esnneoaryn;inh yooe hotm.sfu nty uh rosc', 7)
+'Always forgive your enemies; nothing annoys them so much.'
+
+>>> encode('Live as if you were to die tomorrow. Learn as if you were to live forever.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Live as if you were to die tomorrow. Learn as if you were to live forever.', 1)
+</OUTPUTPROCESSOR>
+'Live as if you were to die tomorrow. Learn as if you were to live forever.'
+
+>>> decode('Live as if you were to die tomorrow. Learn as if you were to live forever.', 1)
+'Live as if you were to die tomorrow. Learn as if you were to live forever.'
+
+>>> encode("If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.", 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.", 6)
+</OUTPUTPROCESSOR>
+"Itw'a otetlfn  hnstkdlhwasfro as atwaa  eoo  e ninhu.ywootml, oothrhio iqo  n  ieagkaeti r,seukak   ss "
+
+>>> decode("Itw'a otetlfn  hnstkdlhwasfro as atwaa  eoo  e ninhu.ywootml, oothrhio iqo  n  ieagkaeti r,seukak   ss ", 6)
+"If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals."
+
+>>> encode('Without music, life would be a mistake.', 4) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Without music, life would be a mistake.', 4)
+</OUTPUTPROCESSOR>
+'Wtced kiu i,f l amaetoms iwub it.huloes'
+
+>>> decode('Wtced kiu i,f l amaetoms iwub it.huloes', 4)
+'Without music, life would be a mistake.'
+
+>>> encode('It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.', 5)
+</OUTPUTPROCESSOR>
+'Itri knhltavoitet esltts iggto, o noedu t beom eahioe u o n kdm  bf.i rtann erfbtoaftatl ealtos it  h harl '
+
+>>> decode('Itri knhltavoitet esltts iggto, o noedu t beom eahioe u o n kdm  bf.i rtann erfbtoaftatl ealtos it  h harl ', 5)
+'It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.'
+
+>>> encode('To live is the rarest thing in the world. Most people exist, that is all.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('To live is the rarest thing in the world. Most people exist, that is all.', 5)
+</OUTPUTPROCESSOR>
+'Tiaih.eit.o srrhnted poxsa l e  etg  lM pethillvtes  nwrotl ,tsaihtiose  '
+
+>>> decode('Tiaih.eit.o srrhnted poxsa l e  etg  lM pethillvtes  nwrotl ,tsaihtiose  ', 5)
+'To live is the rarest thing in the world. Most people exist, that is all.'
+
+>>> encode("Life is what happens to you while you're busy making other plans.", 2) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("Life is what happens to you while you're busy making other plans.", 2)
+</OUTPUTPROCESSOR>
+"Lf swa apn oyuwieyur uymkn te ln.iei hthpest o hl o'ebs aigohrpas"
+
+>>> decode("Lf swa apn oyuwieyur uymkn te ln.iei hthpest o hl o'ebs aigohrpas", 2)
+"Life is what happens to you while you're busy making other plans."
+
+>>> encode('It is better to be hated for what you are than to be loved for what you are not.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('It is better to be hated for what you are than to be loved for what you are not.', 5)
+</OUTPUTPROCESSOR>
+'Itb teoehatet edfa r t vdwa r. beo eohyat bo  tueti rthtrwo hnelfr o os a ua oyn'
+
+>>> decode('Itb teoehatet edfa r t vdwa r. beo eohyat bo  tueti rthtrwo hnelfr o os a ua oyn', 5)
+'It is better to be hated for what you are than to be loved for what you are not.'
+
+>>> encode("Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.", 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.", 1)
+</OUTPUTPROCESSOR>
+"Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring."
+
+>>> decode("Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.", 1)
+"Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring."
+
+>>> encode("If you don't stand for something you will fall for anything.", 4) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("If you don't stand for something you will fall for anything.", 4)
+</OUTPUTPROCESSOR>
+"I   on fotfudtsdfsmiguw afryh. oo'tno eh oill  nigynartyllan"
+
+>>> decode("I   on fotfudtsdfsmiguw afryh. oo'tno eh oill  nigynartyllan", 4)
+"If you don't stand for something you will fall for anything."
+
+>>> encode('There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', 8) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', 8)
+</OUTPUTPROCESSOR>
+'T i u etilhytlv.Oogsah  hhnceelw eenhhi Tosotga.rnoo fet  m tauy reo tyi  ngi.h grii  w olisonreeshesmaeasu satialri v  ryr hc ea'
+
+>>> decode('T i u etilhytlv.Oogsah  hhnceelw eenhhi Tosotga.rnoo fet  m tauy reo tyi  ngi.h grii  w olisonreeshesmaeasu satialri v  ryr hc ea', 8)
+'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.'
+
+>>> encode('The fool doth think he is wise, but the wise man knows himself to be a fool.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('The fool doth think he is wise, but the wise man knows himself to be a fool.', 1)
+</OUTPUTPROCESSOR>
+'The fool doth think he is wise, but the wise man knows himself to be a fool.'
+
+>>> decode('The fool doth think he is wise, but the wise man knows himself to be a fool.', 1)
+'The fool doth think he is wise, but the wise man knows himself to be a fool.'
+
+>>> encode('All that is gold does not glitter, not all those who wander are lost. The old that is strong does not wither, deep roots are not reached by the frost.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('All that is gold does not glitter, not all those who wander are lost. The old that is strong does not wither, deep roots are not reached by the frost.', 1)
+</OUTPUTPROCESSOR>
+'All that is gold does not glitter, not all those who wander are lost. The old that is strong does not wither, deep roots are not reached by the frost.'
+
+>>> decode('All that is gold does not glitter, not all those who wander are lost. The old that is strong does not wither, deep roots are not reached by the frost.', 1)
+'All that is gold does not glitter, not all those who wander are lost. The old that is strong does not wither, deep roots are not reached by the frost.'
+
+>>> encode('Whenever you find yourself on the side of the majority, it is time to pause and reflect.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Whenever you find yourself on the side of the majority, it is time to pause and reflect.', 1)
+</OUTPUTPROCESSOR>
+'Whenever you find yourself on the side of the majority, it is time to pause and reflect.'
+
+>>> decode('Whenever you find yourself on the side of the majority, it is time to pause and reflect.', 1)
+'Whenever you find yourself on the side of the majority, it is time to pause and reflect.'
+
+>>> encode('The man who does not read has no advantage over the man who cannot read.', 3) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('The man who does not read has no advantage over the man who cannot read.', 3)
+</OUTPUTPROCESSOR>
+'Tmwd  ds agvtmwcoeh a h osntra a oavnaeoe h a h antra.enoeoehndt renon d'
+
+>>> decode('Tmwd  ds agvtmwcoeh a h osntra a oavnaeoe h a h antra.enoeoehndt renon d', 3)
+'The man who does not read has no advantage over the man who cannot read.'
+
+>>> encode("Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.", 4) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.", 4)
+</OUTPUTPROCESSOR>
+"Oe a nsenoosdo.ud ad  kia'etinIs fdg'  at dtio o,bosmsb rd ie   ttor rasfgo  f.daioke"
+
+>>> decode("Oe a nsenoosdo.ud ad  kia'etinIs fdg'  at dtio o,bosmsb rd ie   ttor rasfgo  f.daioke", 4)
+"Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read."
+
+>>> encode('A day without sunshine is like, you know, night.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('A day without sunshine is like, you know, night.', 7)
+</OUTPUTPROCESSOR>
+'Atsk u i  n.dos luotahueiowhytnnky,g isie  iwh,n'
+
+>>> decode('Atsk u i  n.dos luotahueiowhytnnky,g isie  iwh,n', 7)
+'A day without sunshine is like, you know, night.'
+
+>>> encode('We are all in the gutter, but some of us are looking at the stars.', 2) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('We are all in the gutter, but some of us are looking at the stars.', 2)
+</OUTPUTPROCESSOR>
+'W r l ntegte,btsm fu r okn ttesaseaeali h utr u oeo saeloiga h tr.'
+
+>>> decode('W r l ntegte,btsm fu r okn ttesaseaeali h utr u oeo saeloiga h tr.', 2)
+'We are all in the gutter, but some of us are looking at the stars.'
+
+>>> encode('That which does not kill us makes us stronger.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('That which does not kill us makes us stronger.', 7)
+</OUTPUTPROCESSOR>
+'To  hdelussa slsutth i  r. cnkmsorwio aenehtkg'
+
+>>> decode('To  hdelussa slsutth i  r. cnkmsorwio aenehtkg', 7)
+'That which does not kill us makes us stronger.'
+
+>>> encode("I have not failed. I've just found 10,000 ways that won't work.", 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("I have not failed. I've just found 10,000 ways that won't work.", 1)
+</OUTPUTPROCESSOR>
+"I have not failed. I've just found 10,000 ways that won't work."
+
+>>> decode("I have not failed. I've just found 10,000 ways that won't work.", 1)
+"I have not failed. I've just found 10,000 ways that won't work."
+
+>>> encode('If you judge people, you have no time to love them.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('If you judge people, you have no time to love them.', 7)
+</OUTPUTPROCESSOR>
+'I  eefepuhm hm geoaitt.ydoyvto oup e  eujl, olv eno'
+
+>>> decode('I  eefepuhm hm geoaitt.ydoyvto oup e  eujl, olv eno', 7)
+'If you judge people, you have no time to love them.'
+
+>>> encode('It does not do to dwell on dreams and forget to live.', 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('It does not do to dwell on dreams and forget to live.', 6)
+</OUTPUTPROCESSOR>
+'Itearvto wlemogie nddlrsfel.d o  d  t os oo ad oetnnt'
+
+>>> decode('Itearvto wlemogie nddlrsfel.d o  d  t os oo ad oetnnt', 6)
+'It does not do to dwell on dreams and forget to live.'
+
+>>> encode('I may not have gone where I intended to go, but I think I have ended up where I needed to be.', 8) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('I may not have gone where I intended to go, but I think I have ended up where I needed to be.', 8)
+</OUTPUTPROCESSOR>
+'I i,Ipe eg no   u ddmvoItgbkh we aan e unadhetyheenotiveeno   rdt hedr  ntwee It neIb.ohd e e'
+
+>>> decode('I i,Ipe eg no   u ddmvoItgbkh we aan e unadhetyheenotiveeno   rdt hedr  ntwee It neIb.ohd e e', 8)
+'I may not have gone where I intended to go, but I think I have ended up where I needed to be.'
+
+>>> encode('I love deadlines. I love the whooshing noise they make as they go by.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('I love deadlines. I love the whooshing noise they make as they go by.', 7)
+</OUTPUTPROCESSOR>
+'Ii nye lnetige hyldevhh hmt oasoesnta gve.l oo kso.ed  woieea y Ihs b'
+
+>>> decode('Ii nye lnetige hyldevhh hmt oasoesnta gve.l oo kso.ed  woieea y Ihs b', 7)
+'I love deadlines. I love the whooshing noise they make as they go by.'
+
+>>> encode('For every minute you are angry you lose sixty seconds of happiness.', 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('For every minute you are angry you lose sixty seconds of happiness.', 6)
+</OUTPUTPROCESSOR>
+'Fm  snpo iuayy iodpirynorroexcsan ruyeguste heeet  n oyso s.veal fs'
+
+>>> decode('Fm  snpo iuayy iodpirynorroexcsan ruyeguste heeet  n oyso s.veal fs', 6)
+'For every minute you are angry you lose sixty seconds of happiness.'
+
+>>> encode("We don't see things as they are, we see them as we are.", 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("We don't see things as they are, we see them as we are.", 5)
+</OUTPUTPROCESSOR>
+"W nh twetsigte,w h e 'ehs yeeees .dnet s r emaaeo aas r"
+
+>>> decode("W nh twetsigte,w h e 'ehs yeeees .dnet s r emaaeo aas r", 5)
+"We don't see things as they are, we see them as we are."
+
+>>> encode('We read to know that we are not alone.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('We read to know that we are not alone.', 1)
+</OUTPUTPROCESSOR>
+'We read to know that we are not alone.'
+
+>>> decode('We read to know that we are not alone.', 1)
+'We read to know that we are not alone.'
+
+>>> encode('Not all of us can do great things. But we can do small things with great love.', 6) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Not all of us can do great things. But we can do small things with great love.', 6)
+</OUTPUTPROCESSOR>
+'N  nemsaofuogigw sag ettosdrhs c lnwr     et.taoliigl.alcna  und ht oelatB thv'
+
+>>> decode('N  nemsaofuogigw sag ettosdrhs c lnwr     et.taoliigl.alcna  und ht oelatB thv', 6)
+'Not all of us can do great things. But we can do small things with great love.'
+
+>>> encode("I'm not upset that you lied to me, I'm upset that from now on I can't believe you.", 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("I'm not upset that you lied to me, I'm upset that from now on I can't believe you.", 5)
+</OUTPUTPROCESSOR>
+"Iuaieptoclu' phtlem,usa nw aeio.mtst  d   ehf  Inbey oe yu oImttrmo ' v ntot' onte"
+
+>>> decode("Iuaieptoclu' phtlem,usa nw aeio.mtst  d   ehf  Inbey oe yu oImttrmo ' v ntot' onte", 5)
+"I'm not upset that you lied to me, I'm upset that from now on I can't believe you."
+
+>>> encode('One good thing about music, when it hits you, you feel no pain.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('One good thing about music, when it hits you, you feel no pain.', 7)
+</OUTPUTPROCESSOR>
+'Onihuinigsc io aneh u,ttyfp. tam is e g b w  ,eoodothnyulnoueo '
+
+>>> decode('Onihuinigsc io aneh u,ttyfp. tam is e g b w  ,eoodothnyulnoueo ', 7)
+'One good thing about music, when it hits you, you feel no pain.'
+
+>>> encode('Do what you can, with what you have, where you are.', 5) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Do what you can, with what you have, where you are.', 5)
+</OUTPUTPROCESSOR>
+'Dy aarro o,whthveeae tuniw  eh  .wa at yu,wyuhcho o'
+
+>>> decode('Dy aarro o,whthveeae tuniw  eh  .wa at yu,wyuhcho o', 5)
+'Do what you can, with what you have, where you are.'
+
+>>> encode("All you need is love. But a little chocolate now and then doesn't hurt.", 3) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer("All you need is love. But a little chocolate now and then doesn't hurt.", 3)
+</OUTPUTPROCESSOR>
+"Ayn l.tllhl   netrl o edi oe u  itecooaenwadte os' utluesvBat ctonhdnh."
+
+>>> decode("Ayn l.tllhl   netrl o edi oe u  itecooaenwadte os' utluesvBat ctonhdnh.", 3)
+"All you need is love. But a little chocolate now and then doesn't hurt."
+
+>>> encode('Love looks not with the eyes, but with the mind.', 7) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('Love looks not with the eyes, but with the mind.', 7)
+</OUTPUTPROCESSOR>
+'Loetont yih.v  eew deswhs tn kit,thilot  uemohb '
+
+>>> decode('Loetont yih.v  eew deswhs tn kit,thilot  uemohb ', 7)
+'Love looks not with the eyes, but with the mind.'
+
+>>> encode('The difference between genius and stupidity is; genius has its limits.', 1) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('The difference between genius and stupidity is; genius has its limits.', 1)
+</OUTPUTPROCESSOR>
+'The difference between genius and stupidity is; genius has its limits.'
+
+>>> decode('The difference between genius and stupidity is; genius has its limits.', 1)
+'The difference between genius and stupidity is; genius has its limits.'
+
+>>> encode('For most of history, Anonymous was a woman.', 3) 
+<OUTPUTPROCESSOR>
+RailFenceRenderer('For most of history, Anonymous was a woman.', 3)
+</OUTPUTPROCESSOR>
+'Fm ho nua ao oto itr,Aoyoswsawmnrsfsynm  o.'
+
+>>> decode('Fm ho nua ao oto itr,Aoyoswsawmnrsfsynm  o.', 3)
+'For most of history, Anonymous was a woman.'
+

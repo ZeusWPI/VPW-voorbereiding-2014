@@ -1,0 +1,104 @@
+        <p style="text-align: justify;">Bij spoorhekcodering (of zigzagcodering) worden de letters van een gegeven tekst eerst diagonaal naar beneden uitgeschreven op opeenvolgende "sporen" van een denkbeeldig hek. Nadat het onderste spoor bereikt wordt, gaat het uitschrijven van de letters diagonaal naar boven verder. De tekst wordt opnieuw diagonaal naar beneden uitgeschreven, van zodra het bovenste spoor bereikt wordt. Deze procedure herhaalt zich totdat alle letters van de tekst uitgeschreven zijn. Als we bijvoorbeeld op vier sporen de tekst "<span
+            style="font-family: monospace;">And now for something completely different.</span>" uitschrijven, dan krijgen we</p>
+        <div class="hlcode">
+          <div class="syntax">
+            <pre><span style="color:#888888;"><span style="background-color:#ffff00; color:#000000;"><strong>A</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>w</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>s</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>i</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>m</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>l</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>f</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>.</strong></span></span>
+<span style="color:#888888;">#<span style="background-color:#ffff00; color:#000000;"><strong>n</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>o</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong> </strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong> </strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>o</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>h</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>n</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>o</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>p</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>e</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>y</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>f</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>e</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>t</strong></span>#</span>
+<span style="color:#888888;">##<span style="background-color:#ffff00; color:#000000;"><strong>d</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>n</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>f</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>r</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>m</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>t</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>g</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>c</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>l</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>t</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong> </strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>i</strong></span>###<span
+style="background-color:#ffff00; color:#000000;"><strong>r</strong></span>#<span
+style="background-color:#ffff00; color:#000000;"><strong>n</strong></span>##</span>
+<span style="color:#888888;">###<span style="background-color:#ffff00; color:#000000;"><strong> </strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>o</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>e</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong> </strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>e</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>d</strong></span>#####<span
+style="background-color:#ffff00; color:#000000;"><strong>e</strong></span>###</span>
+</pre>
+          </div>
+        </div>
+        <p style="text-align: justify;">De gecodeerde tekst wordt gevormd door de letters per spoor van links naar rechts achter elkaar te zetten, en dit vanaf het bovenste spoor tot het onderste spoor. De gecodeerde boodschap voor de bovenstaande voorbeeldtekst leest dan als "<span
+            style="font-family: monospace;">Awsimlf.no&nbsp; ohnopeyfetdnfrmtgclt irn oe ede</span>".</p>
+        <h3>Opgave</h3>
+        <ul style="text-align: justify;">
+          <li>Schrijf een functie <span style="font-family: monospace;">codeer</span> waaraan twee argumenten moeten doorgegeven worden: <em>i</em>) een tekst die moet gecodeerd worden, en <em>ii</em>) het aantal sporen dat hierbij gebruikt wordt. De functie moet als resultaat een string teruggeven, die de gecodeerde versie van de gegeven tekst bevat volgens de spoorhekcodering met het gegeven aantal sporen.</li>
+          <li>Schrijf een functie <span style="font-family: monospace;">decodeer</span> waaraan twee argumenten moeten doorgegeven worden: <em>i</em>) een tekst die gecodeerd werd volgens de spoorhekcodering, en <em>ii</em>) het aantal sporen dat hierbij gebruikt werd. De functie moet als resultaat een string teruggeven die de originele tekst na decodering bevat.</li>
+        </ul>
+        <h3>Voorbeeld</h3>
+        <div class="hlcode">
+          <div class="syntax">
+            <pre><span class="gp">&gt;&gt;&gt; </span><span class="n">codeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">codeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">'Adnwfrsmtigcmltl ifrn.n o o oehn opeeydfeet'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">codeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">'Anfstgmt fnn o o oehn opeeydfeetdwrmicllir.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">codeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">'Awsimlf.no  ohnopeyfetdnfrmtgclt irn oe ede'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">codeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">'Aftm nn oehopydetdwrmicllir. o on eefensgtf'</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeer</span><span
+class="p">(</span><span class="s">'And now for something completely different.'</span><span
+class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeer</span><span
+class="p">(</span><span class="s">'Adnwfrsmtigcmltl ifrn.n o o oehn opeeydfeet'</span><span
+class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeer</span><span
+class="p">(</span><span class="s">'Anfstgmt fnn o o oehn opeeydfeetdwrmicllir.'</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeer</span><span
+class="p">(</span><span class="s">'Awsimlf.no  ohnopeyfetdnfrmtgclt irn oe ede'</span><span
+class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeer</span><span
+class="p">(</span><span class="s">'Aftm nn oehopydetdwrmicllir. o on eefensgtf'</span><span
+class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">'And now for something completely different.'</span>
+</pre>
+          </div>
+        </div>
