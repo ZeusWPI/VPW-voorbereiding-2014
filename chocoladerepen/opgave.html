@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+  </head>
+  <body>
+    <p style="text-align: justify;">Alice en Bob hebben zelf een spelletje
+      uitgevonden, waarbij ze $n$ chocoladerepen achter elkaar plaatsen. Alice
+      begint de chocoladerepen &eacute;&eacute;n na &eacute;&eacute;n op te eten
+      van links naar rechts, en Bob doet hetzelfde van rechts naar links. Alice
+      en Bob eten even snel, en van elke chocoladereep is op voorhand geweten
+      hoeveel tijd er nodig is om ze op te eten. Als Alice of Bob een
+      chocoladereep volledig heeft opgegeten, dan begint zij/hij onmiddellijk de
+      volgende op te eten. Bij hun spelletje is het niet toegelaten om twee
+      chocoladerepen terzelfdertijd op te eten, chocoladerepen maar half op te
+      eten, of pauzes in te lassen. Als beiden op hetzelfde moment dezelfde
+      chocoladereep willen opeten, dan is Bob de hoffelijkheid zelve en laat
+      Alice voorgaan.</p>
+    <div style="text-align:center;"><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+        href="http://www.pythia.ugent.be/spoj/files/eat_chocolate.jpg"><img title="mmmmmmmmmm"
+          src="http://www.pythia.ugent.be/spoj/files/eat_chocolate.jpg" alt="mmmmmmmmmm"
+          height="180"></a></div>
+    <p style="text-align: justify;">Hoeveel chocoladerepen hebben Alice en Bob
+      elk opgegeten op het einde van het spelletje?</p>
+    <h3>Opgave</h3>
+    <p style="text-align: justify;">Schrijf een functie <span style="font-family: monospace;">chocoladerepen</span>
+      waaraan een lijst van strikt positieve natuurlijke getallen moet
+      doorgegeven worden. De getallen in deze lijst stellen telkens de tijd voor
+      die nodig is om de chocoladereep op de corresponderende positie volledig
+      op te eten. De functie moet een tuple $(a, b)$ teruggeven, waarbij $a$ het
+      aantal chocoladerepen is dat Alice heeft opgegeten op het einde van het
+      spelletje en $b$ het aantal chocoladerepen dat Bob heeft opgegeten.</p>
+    <h3>Voorbeeld</h3>
+    <div class="hlcode">
+      <div class="syntax">
+        <pre><span class="gp">&gt;&gt;&gt; </span><span class="n">chocoladerepen</span><span
+class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span
+class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span
+class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="go">(2, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chocoladerepen</span><span
+class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span
+class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span
+class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">(4, 3)</span>
+</pre> </div>
+    </div>
+  </body>
+</html>
