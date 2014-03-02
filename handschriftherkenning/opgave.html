@@ -1,0 +1,122 @@
+    <p style="text-align: justify;"><em>Optical character recognition</em> (OCR) is een techniek die kan gebruikt worden om ingescande afbeeldingen van handgeschreven, getypte of afgedrukte tekst om te zetten naar ASCII-tekst die leesbaar is voor een computer. Deze techniek wordt vaak gebruikt om afgedrukte teksten te digitaliseren zodat men ze elektronisch kan doorzoeken, compacter kan opslaan, online kan weergeven, of ze automatisch kan laten vertalen of voorlezen door een computer. OCR vormt een onderzoeksdomein binnen de patroonherkenning, artifici&euml;le intelligentie en computervisualisatie.</p>
+    <h3>Opgave</h3>
+    <p style="text-align: justify;">In deze opgave werken we met tekstbestanden, waarvan de regels een aantal handgeschreven karakters voorstellen. Het handschrift staat telkens in een lettertype dat voldoet aan volgende voorwaarden:</p>
+    <ul style="text-align: justify;">
+      <li>alle regels hebben dezelfde lengte (inclusief spaties)</li>
+      <li>gelijke handgeschreven karakters worden steeds op dezelfde manier weergegeven</li>
+      <li>verschillende handgeschreven karakters worden nooit op dezelfde manier weergegeven</li>
+      <li>de voorstelling van een handgeschreven karakter bevat nooit lege kolommen</li>
+      <li>tussen twee opeenvolgende handgeschreven karakters staan &eacute;&eacute;n of meer lege kolommen</li>
+      <li>voor het eerste en na het laatste handgeschreven karakter staan nul of meer lege kolommen</li>
+    </ul>
+    <p style="text-align: justify;">Een lege kolom is een kolom van de regels met handgeschreven tekst die enkel bestaat uit spaties. Hieronder wordt de inhoud weergegeven van een dergelijk tekstbestand dat een handgeschreven versie van de letters <span
+        style="font-family: monospace;">ocrrococo</span> bevat. Klik <a
+        class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+        href="http://www.pythia.ugent.be/spoj/files/ocr.png">hier</a> om een grafische voorstelling van de segmentatie van dit tekstbestand te bekijken. Hierbij worden de segmenten aangegeven met een donkergrijze achtergrond, en worden de regels die niet opgenomen worden in de stringvoorstelling van segmenten met een rode lijn doorstreept.</p>
+    <div class="hlcode">
+      <div class="syntax">
+        <pre>                                             
+                                             
+                                             
+ ##   ### # ## # ##  ##   ###  ##   ###  ##  
+#  # #    ## # ## # #  # #    #  # #    #  # 
+#  # #    #    #    #  # #    #  # #    #  # 
+#  # #    #    #    #  # #    #  # #    #  # 
+#  # #    #    #    #  # #    #  # #    #  # 
+ ##   ### #    #     ##   ###  ##   ###  ##  
+                                             
+                                             
+</pre> </div>
+    </div>
+    <p style="text-align: justify;">De opgave bestaat erin om de inhoud van het tekstbestand om te zetten naar de corresponderende reeks ASCII karakters. Hiervoor ga je als volgt te werk:</p>
+    <ul style="text-align: justify;">
+      <li>OCR start vaak met het <em>segmenteren</em> van de handgeschreven tekst, waarbij het handschrift wordt opgedeeld in individuele handgeschreven karakters (in deze context <em>segmenten</em> genoemd). Schrijf daarvoor een functie <span
+          style="font-family: monospace;">segmentatie</span> waaraan de locatie van een tekstbestand met handgeschreven tekst als argument moet doorgegeven worden. De functie moet een lijst teruggeven met alle segmenten die in het tekstbestand voorkomen. Daarbij wordt een segment gevormd door &eacute;&eacute;n of meer opeenvolgende niet-lege kolommen die tussen twee lege kolommen ingesloten zitten. Ook opeenvolgende niet-lege kolommen vooraan of achteraan het tekstbestand vormen een segment. Een segment wordt voorgesteld als een string door alle rijen van het segment achter elkaar te zetten en van elkaar te scheiden door <em>newline</em> karakters. Rijen waarop in het oorspronkelijke tekstbestand alle karakters spaties zijn (niet enkel binnen het segment, maar over de volledige regel), worden niet opgenomen in de stringvoorstelling van het segment. Het is de stringvoorstelling van een segment die moet opgenomen worden in de lijst die door de functie wordt teruggegeven.</li>
+      <li>Gebruik de functie <span style="font-family: monospace;">segmentatie</span> om een functie <span
+          style="font-family: monospace;">OCR</span> te schrijven die kan gebruikt worden om een handgeschreven tekst om te zetten naar de corresponderende ASCII karakters. De handgeschreven tekst zit opgeslagen in een tekstbestand, waarvan de locatie als argument aan de functie moet doorgegeven worden. Het deel van de bestandslocatie voor het eerste punt vormt een woord, waarvan de ASCII karakters meteen ook de beginkarakters vormen van de handgeschreven tekst. De bestandsnaam <span
+          style="font-family: monospace;">ocr.txt</span> levert dan bijvoorbeeld het woord <span
+          style="font-family: monospace;">ocr</span> op. De resterende karakters van de handgeschreven tekst komen allemaal ook in het woord voor. De functie moet een string teruggeven die de ASCII karakters bevat die corresponderen met het woord dat bestaat uit de resterende handgeschreven karakters.</li>
+    </ul>
+    <h3>Voorbeeld</h3>
+    <p style="text-align: justify;">Bij onderstaande voorbeeldsessie gaan we ervan uit dat de tekstbestanden <a
+        href="http://www.pythia.ugent.be/spoj/files/ocr.txt">ocr.txt</a>, <a
+        href="http://www.pythia.ugent.be/spoj/files/sportmannen.txt">sportmannen.txt</a> en <a
+        href="http://www.pythia.ugent.be/spoj/files/romanheld.txt">romanheld.txt</a> zich in de huidige directory bevinden.</p>
+    <div class="hlcode">
+      <div class="syntax">
+        <pre><span class="gp">&gt;&gt;&gt; </span><span class="n">segment</span> <span
+class="o">=</span> <span class="n">segmentatie</span><span class="p">(</span><span
+class="s">'<a href="http://www.pythia.ugent.be/spoj/files/ocr.txt">ocr.txt</a>'</span><span
+class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">segment</span><span
+class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">' ## \\n#  #\\n#  #\\n#  #\\n#  #\\n ## '</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">segment</span><span class="p">[</span><span class="mi">0</span><span
+class="p">])</span>
+<span class="go"> ## </span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go"> ## </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">segment</span><span class="p">[</span><span class="mi">1</span><span
+class="p">])</span>
+<span class="go"> ###</span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go"> ###</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">segment</span><span class="p">[</span><span class="mi">2</span><span
+class="p">])</span>
+<span class="go"># ##</span>
+<span class="go">## #</span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">segment</span><span class="p">[</span><span class="mi">3</span><span
+class="p">])</span>
+<span class="go"># ##</span>
+<span class="go">## #</span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="go">#   </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span
+class="n">segment</span><span class="p">[</span><span class="o">-</span><span
+class="mi">1</span><span class="p">])</span>
+<span class="go"> ## </span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go">#  #</span>
+<span class="go"> ## </span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OCR</span><span class="p">(</span><span
+class="s">'<a href="http://www.pythia.ugent.be/spoj/files/ocr.txt">ocr.txt</a>'</span><span
+class="p">)</span>
+<span class="go">'rococo'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OCR</span><span class="p">(</span><span
+class="s">'<a href="http://www.pythia.ugent.be/spoj/files/sportmannen.txt">sportmannen.txt</a>'</span><span
+class="p">)</span>
+<span class="go">'marmer'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OCR</span><span class="p">(</span><span
+class="s">'<a href="http://www.pythia.ugent.be/spoj/files/romanheld.txt">romanheld.txt</a>'</span><span
+class="p">)</span>
+<span class="go">'emerald'</span>
+</pre> </div>
+    </div>
+    <p style="text-align: justify;">Klik op onderstaande links om een grafische voorstelling van de segmentatie van de tekstbestanden te bekijken. Hierbij worden de segmenten aangegeven met een donkergrijze achtergrond, en worden de regels die niet opgenomen worden in de stringvoorstelling van segmenten met een rode lijn doorstreept.</p>
+    <ul>
+      <li><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+          href="http://www.pythia.ugent.be/spoj/files/ocr.png">ocr.txt</a></li>
+      <li><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+          href="http://www.pythia.ugent.be/spoj/files/sportmannen.png">sportmannen.txt</a></li>
+      <li><a class="highslide" onclick="return hs.expand(this, { outlineType: 'rounded-white' })"
+          href="http://www.pythia.ugent.be/spoj/files/romanheld.png">romanheld.txt</a></li>
+    </ul>
