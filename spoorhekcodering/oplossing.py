@@ -79,5 +79,11 @@ def decodeer(tekst, k):
     return resultaat
     
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+    import sys
+    lines = sys.stdin
+    times = int(next(lines).strip())
+    for i in range(times):
+        mode, width = next(lines).split()
+        width = int(width.strip())
+        print(dict(decode=decodeer, encode=codeer)[mode](next(lines).strip('\n'), width))
+
