@@ -33,3 +33,5 @@ def OCR(naam):
     d = {teken: letter for letter,teken in zip(naam, l[:len(naam)])}
     
     return ''.join([d[teken] for teken in l[len(naam):-1]])
+
+if __name__ == '__main__':
