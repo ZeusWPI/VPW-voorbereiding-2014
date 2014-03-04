@@ -1,3 +1,4 @@
+
 def multistrip(l):
     while l[0] and all([s[0]==' ' for s in l]):
         for i in range(len(l)):
@@ -14,8 +15,8 @@ def popLetter(l):
         l[j] = l[j][i:]
     return letter
 
-def segmentatie(naam):
-    lines = [l.strip('\n') for l in open(naam).readlines()]
+def segmentatie(tekst):
+    lines = [l.strip('\n') for l in tekst]
     
     l = [popLetter(lines)]
 
@@ -25,13 +26,18 @@ def segmentatie(naam):
     return l[:-1]
     
 
-def OCR(naam):
-    l = segmentatie(naam)
+def OCR(naam, tekst):
+    l = segmentatie(tekst)
     
-    naam = naam[:naam.find('.')]
+    d = {teken: letter for letter,teken in zip(naam, l)}
     
-    d = {teken: letter for letter,teken in zip(naam, l[:len(naam)])}
-    
-    return ''.join([d[teken] for teken in l[len(naam):-1]])
+    return ''.join([d[teken] for teken in l[len(naam):]])
 
 if __name__ == '__main__':
+    cases = int(input().strip())
+    for i in range(cases):
+        name, lines = input().strip().split()
+        lines = int(lines)
+        block = []
+        for j in range(lines): block.append(input())
+        print(OCR(name, block))
