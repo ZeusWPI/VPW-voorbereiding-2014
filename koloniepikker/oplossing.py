@@ -1,7 +1,7 @@
 class PetriDish:
     
     """
-    >>> dish = PetriDish('dish.txt')
+    >>> dish = PetriDish(open('dish.txt', 'r'))
     >>> print(dish)
     <BLANKLINE>
                              ###                                
@@ -100,10 +100,10 @@ class PetriDish:
     32.2
     """
     
-    def __init__(self, bitmap):
+    def __init__(self, lines):
         
         # read petri dish bitmap
-        self._bitmap = [list(line.rstrip('\n')) for line in open(bitmap, 'r')]
+        self._bitmap = [list(line.rstrip('\n')) for line in lines]
             
         # list of known colony sizes
         self._count = None
@@ -235,5 +235,16 @@ class PetriDish:
         return self._analyze_count(minimum, func=average)
         
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+    cases = int(input().strip())
+    for case in range(cases):
+        height, width, minimum = [int(i) for i in input().strip().split()]
+        lines = []
+        for line in range(height):
+            lines.append(input())
+            if line > 0: assert len(lines[-1]) == len(lines[-2]), "%d %d" % (line, height)
+        dish = PetriDish(lines)
+        if dish.size(minimum) is not None:
+            print("{} {}".format(dish.count(minimum), round(dish.size(minimum), 3)))
+        else:
+            print("0 NaN")
+
