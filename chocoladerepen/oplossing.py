@@ -1,3 +1,6 @@
+
+import sys
+
 def chocoladerepen(repen):
     
     """
@@ -34,5 +37,7 @@ def chocoladerepen(repen):
     return alice, bob
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+    _ = int(input().strip())
+    for line in sys.stdin:
+        bars = [int(i) for i in line.strip().split()]
+        print("{} {}".format(*chocoladerepen(bars)))
