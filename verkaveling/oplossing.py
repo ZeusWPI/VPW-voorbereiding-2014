@@ -97,3 +97,11 @@ class Verkaveling:
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+    cases = int(input().strip())
+    for _ in range(cases):
+        height, width = [int(i) for i in input().split()]
+        lines = []
+        for _ in range(height): lines.append(input())
+        verkaveling = Verkaveling(height, width)
+        verkaveling.gereserveerd = [[c == "-" for c in line] for line in lines]
+        print(verkaveling.grootstePerceel())
