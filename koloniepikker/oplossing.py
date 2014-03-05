@@ -235,6 +235,9 @@ class PetriDish:
         return self._analyze_count(minimum, func=average)
         
 if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+
     cases = int(input().strip())
     for case in range(cases):
         height, width, minimum = [int(i) for i in input().strip().split()]
