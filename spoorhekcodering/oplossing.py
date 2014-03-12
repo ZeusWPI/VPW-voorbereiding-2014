@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 def codeer(tekst, k):
-    
+
     """
     >>> codeer('And now for something completely different.', 1)
     'And now for something completely different.'
@@ -12,7 +16,7 @@ def codeer(tekst, k):
     >>> codeer('And now for something completely different.', 5)
     'Aftm nn oehopydetdwrmicllir. o on eefensgtf'
     """
-    
+
     # spoorhek opbouwen
     matrix = [['' for _ in range(len(tekst))] for _ in range(k)]
     rij, volgende = 0, -1
@@ -23,7 +27,7 @@ def codeer(tekst, k):
         if rij == 0 or rij == k - 1:
             volgende *= -1
         rij += volgende
-        
+
     # spoorhek uitlezen
     resultaat = ''
     for rij in range(k):
@@ -31,8 +35,9 @@ def codeer(tekst, k):
             resultaat += matrix[rij][kolom]
     return resultaat
 
+
 def decodeer(tekst, k):
-        
+
     """
     >>> decodeer('And now for something completely different.', 1)
     'And now for something completely different.'
@@ -45,7 +50,7 @@ def decodeer(tekst, k):
     >>> decodeer('Aftm nn oehopydetdwrmicllir. o on eefensgtf', 5)
     'And now for something completely different.'
     """
-    
+
     # sporen uitzetten op spoorhek
     matrix = [['' for _ in range(len(tekst))] for _ in range(k)]
     rij, volgende = 0, -1
@@ -56,7 +61,7 @@ def decodeer(tekst, k):
         if rij == 0 or rij == k - 1:
             volgende *= -1
         rij += volgende
-        
+
     # letters invullen op spoorhek
     n = 0
     for rij in range(k):
@@ -64,7 +69,7 @@ def decodeer(tekst, k):
             if matrix[rij][kolom] is None:
                 matrix[rij][kolom] = tekst[n]
                 n += 1
-        
+
     # spoorhek uitlezen
     resultaat = ''
     rij, volgende = 0, -1
@@ -75,15 +80,17 @@ def decodeer(tekst, k):
         if rij == 0 or rij == k - 1:
             volgende *= -1
         rij += volgende
-        
+
     return resultaat
-    
+
+
 if __name__ == '__main__':
+    TRANSLATION_TABLE = dict(decode=decodeer, encode=codeer)
+
     import sys
     lines = sys.stdin
     times = int(next(lines).strip())
     for i in range(times):
         mode, width = next(lines).split()
         width = int(width.strip())
-        print(dict(decode=decodeer, encode=codeer)[mode](next(lines).strip('\n'), width))
-
+        print(TRANSLATION_TABLE[mode](next(lines).strip('\n'), width))

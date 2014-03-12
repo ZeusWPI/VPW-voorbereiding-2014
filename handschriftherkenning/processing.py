@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 
 block = []
@@ -10,4 +12,3 @@ for line in sys.stdin:
         block = []
     else:
         block.append(line.strip('\n'))
-
