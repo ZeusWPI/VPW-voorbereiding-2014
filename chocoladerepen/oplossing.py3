@@ -36,8 +36,7 @@ def chocoladerepen(repen):
     # aantal opgegeten repen teruggeven
     return alice, bob
 
-if __name__ == '__main__':
-    _ = int(input().strip())
-    for line in sys.stdin:
-        bars = [int(i) for i in line.strip().split()]
-        print("{} {}".format(*chocoladerepen(bars)))
+for line in range(int(input().strip())):
+    line = input().strip()
+    bars = [int(i) for i in line.strip().split()]
+    print("{} {}".format(*chocoladerepen(bars)))
