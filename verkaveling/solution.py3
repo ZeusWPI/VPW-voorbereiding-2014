@@ -25,10 +25,9 @@ def sizes(matrix):
 
 if __name__ == '__main__':
     import sys
-    block = []
-    for line in sys.stdin:
-        if line == '\n':
-            print(max(sizes(block[1:])))
-            block = []
-        else:
-            block.append(line.strip())
+    for i in range(int(input().strip())):
+        height, width = [int(i) for i in input().strip().split()]
+        block = []
+        for j in range(height): block.append(input().strip())
+        print(max(sizes(block)))
+

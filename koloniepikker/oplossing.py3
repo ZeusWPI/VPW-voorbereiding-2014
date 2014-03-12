@@ -236,8 +236,8 @@ class PetriDish:
 
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+    #import doctest
+    #doctest.testmod()
 
     cases = int(input().strip())
     for case in range(cases):
