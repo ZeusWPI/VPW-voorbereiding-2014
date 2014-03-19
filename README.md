@@ -4,15 +4,15 @@ VPW-voorbereiding-2014
 Vragen en antwoorden voor de VPW-voorbereidingswedstrijd 2014
 
 
-## Teams zullen hier kunnen inloggen:
+#### Teams zullen hier kunnen inloggen:
 
 http://www.vlaamseprogrammeerwedstrijd.be/zeus/team/
 
-## Indien je het scorebord wil bekijken:
+#### Indien je het scorebord wil bekijken:
 
 http://www.vlaamseprogrammeerwedstrijd.be/zeus/public/
 
-## Inloggen kan met volgende gegevens
+#### Inloggen kan met volgende gegevens
 
 ###### Team1
     Login:     team1
